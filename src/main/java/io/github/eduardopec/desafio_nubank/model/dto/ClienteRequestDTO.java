@@ -17,12 +17,15 @@ public class ClienteRequestDTO {
 
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
+
     @NotBlank(message = "Email é obrigatório")
     @Email(message = "Email inválido")
     private String email;
+
     @NotBlank(message = "CPF é obrigatório")
     @CPF(message = "CPF inválido")
     private String cpf;
+
     @NotBlank(message = "Telefone é obrigatório")
     private String telefone;
 

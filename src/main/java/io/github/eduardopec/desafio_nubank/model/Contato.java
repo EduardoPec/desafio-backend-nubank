@@ -7,15 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table(name = "tb_cliente")
+@Table(name = "tb_contato")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente {
+public class Contato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,20 +23,18 @@ public class Cliente {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column(nullable = false, unique = true)
-    private String cpf;
-
     @Column(nullable = false)
     private String telefone;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private LocalDateTime dataCadastro;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Contato> contatos;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
 
     @PrePersist
     protected void onCreate() {
