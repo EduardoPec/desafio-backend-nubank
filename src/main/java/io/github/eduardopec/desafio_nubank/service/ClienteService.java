@@ -29,7 +29,8 @@ public class ClienteService {
     }
 
     public ClienteResponseDTO listarClientesPorId(Long id) {
-        Cliente cliente = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado. ID: " + id));
+        Cliente cliente = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado. ID: " + id));
         return ClienteResponseDTO.fromEntity(cliente);
     }
 
